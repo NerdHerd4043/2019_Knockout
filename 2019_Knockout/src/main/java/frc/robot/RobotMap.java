@@ -16,8 +16,8 @@ public static WPI_TalonSRX motorFR = new WPI_TalonSRX(1);
 public static WPI_TalonSRX motorFL = new WPI_TalonSRX(2);
 public static WPI_TalonSRX motorBR = new WPI_TalonSRX(3);
 public static WPI_TalonSRX motorBL = new WPI_TalonSRX(4);
-public static WPI_TalonSRX motorMF = new WPI_TalonSRX(5);  
-public static WPI_TalonSRX motorMB = new WPI_TalonSRX(6);
+public static WPI_TalonSRX motorMR = new WPI_TalonSRX(5);  
+public static WPI_TalonSRX motorML = new WPI_TalonSRX(6);
 
 public static Solenoid shifter = new Solenoid(1,0);
 }

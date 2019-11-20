@@ -31,14 +31,14 @@ diffDrive = new DifferentialDrive(RobotMap.motorFL, RobotMap.motorFR);
 
 RobotMap.motorBL.follow(RobotMap.motorFL);
 RobotMap.motorBR.follow(RobotMap.motorFR);
-RobotMap.motorMB.follow(RobotMap.motorMF);
+RobotMap.motorML.follow(RobotMap.motorMR);
 
 RobotMap.motorBL.setSafetyEnabled(false);
     RobotMap.motorFL.setSafetyEnabled(false);
     RobotMap.motorBR.setSafetyEnabled(false);
     RobotMap.motorFR.setSafetyEnabled(false);
-    RobotMap.motorMF.setSafetyEnabled(false);
-    RobotMap.motorMB.setSafetyEnabled(false);
+    RobotMap.motorMR.setSafetyEnabled(false);
+    RobotMap.motorML.setSafetyEnabled(false);
 }
 
 public void drive(Joystick joy){
@@ -64,7 +64,7 @@ public void drive(double speed, double turn){
 }
 
 public void strafe(double inputStrafe){
-  RobotMap.motorMF.set(inputStrafe);
+  RobotMap.motorMR.set(inputStrafe);
 }
 
 public void shift() {
