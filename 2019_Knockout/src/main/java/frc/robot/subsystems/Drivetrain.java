@@ -23,6 +23,7 @@ public class Drivetrain extends Subsystem {
   public DifferentialDrive diffDrive;
   double inputSpeed;
   double inputTurn;
+  double inputStrafe;
 
 public Drivetrain(){
 super();
@@ -30,16 +31,54 @@ diffDrive = new DifferentialDrive(RobotMap.motorFL, RobotMap.motorFR);
 
 RobotMap.motorBL.follow(RobotMap.motorFL);
 RobotMap.motorBR.follow(RobotMap.motorFR);
+RobotMap.motorMB.follow(RobotMap.motorMF);
 
 RobotMap.motorBL.setSafetyEnabled(false);
     RobotMap.motorFL.setSafetyEnabled(false);
     RobotMap.motorBR.setSafetyEnabled(false);
     RobotMap.motorFR.setSafetyEnabled(false);
+    RobotMap.motorMF.setSafetyEnabled(false);
+    RobotMap.motorMB.setSafetyEnabled(false);
+}
+
+public void drive(Joystick joy){
+if (Robot.arcadeDrive.getBoolean(true)){
+  inputSpeed = -joy.getRawAxis(1);
+  inputTurn = joy.getRawAxis(4);
+} else {
+  inputSpeed = -joy.getRawAxis(1);
+  inputTurn = joy.getRawAxis(5);
+}
+  drive(inputSpeed, inputTurn);
+  inputStrafe = joy.getRawAxis(0);
+  strafe(inputStrafe);
+}
+
+
+public void drive(double speed, double turn){
+  if (Robot.arcadeDrive.getBoolean(true)){
+    diffDrive.arcadeDrive(speed, turn, true);
+  } else {
+    diffDrive.tankDrive(speed, turn, true);
+  }
+}
+
+public void strafe(double inputStrafe){
+  RobotMap.motorMF.set(inputStrafe);
+}
+
+public void shift() {
+  RobotMap.shifter.set(true);
+}
+
+public void antiShift() {
+  RobotMap.shifter.set(false);
 }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new Drive());
   }
 }

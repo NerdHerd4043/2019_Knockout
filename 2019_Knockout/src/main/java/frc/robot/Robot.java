@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import edu.wpi.first.networktables.NetworkTableEntry;
+
 import frc.robot.subsystems.*;
 
 /**
@@ -25,6 +27,8 @@ import frc.robot.subsystems.*;
 public class Robot extends TimedRobot {
 
   public static Drivetrain drivetrain;
+
+  public static NetworkTableEntry arcadeDrive;
 
 //always add last
   public static OI m_oi;
