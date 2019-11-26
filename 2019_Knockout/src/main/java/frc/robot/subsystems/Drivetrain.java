@@ -75,6 +75,14 @@ public void antiShift() {
   RobotMap.shifter.set(false);
 }
 
+public void extendWheel(){
+RobotMap.wheelPusher.set(true);
+}
+
+public void retractwheel(){
+RobotMap.wheelPusher.set(false);
+}
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

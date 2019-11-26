@@ -27,6 +27,7 @@ import frc.robot.subsystems.*;
 public class Robot extends TimedRobot {
 
   public static Drivetrain drivetrain;
+  public static Yoinker yoinker;
 
   public static NetworkTableEntry arcadeDrive;
 
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
 
     drivetrain = new Drivetrain();
+    yoinker = new Yoinker();
     
     m_oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());

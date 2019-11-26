@@ -10,6 +10,10 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.AntiShift;
+import frc.robot.commands.ExtendWheel;
+import frc.robot.commands.RetractWheel;
+import frc.robot.commands.Shift;
 
 //import frc.robot.commands.*;
 /**
@@ -49,6 +53,22 @@ public class OI {
 
   Button ShiftBtn = new JoystickButton(driveStick, 5);
   Button AntiShiftBtn = new JoystickButton(driveStick, 6);
+
+  Button ExtendWheelBtn = new JoystickButton(driveStick, 7);
+  Button RetractWheelBtn = new JoystickButton(driveStick, 8);
+
+  //4mwiab - Erik
+  Button yoinkerUpBtn = new JoystickButton(driveStick, 1);
+  Button yoinkerDownBtn = new JoystickButton(driveStick, 2);
+  
+
+  public OI() {
+    ShiftBtn.whenPressed(new Shift());
+    AntiShiftBtn.whenPressed(new AntiShift());
+    ExtendWheelBtn.whenPressed(new ExtendWheel());
+    RetractWheelBtn.whenPressed(new RetractWheel());
+  }
+
 
   public Joystick getDrivestick(){
     return driveStick;

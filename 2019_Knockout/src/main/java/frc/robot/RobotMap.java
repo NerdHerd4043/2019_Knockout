@@ -12,12 +12,17 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class RobotMap {
-public static WPI_TalonSRX motorFR = new WPI_TalonSRX(1);
-public static WPI_TalonSRX motorFL = new WPI_TalonSRX(2);
-public static WPI_TalonSRX motorBR = new WPI_TalonSRX(3);
-public static WPI_TalonSRX motorBL = new WPI_TalonSRX(4);
-public static WPI_TalonSRX motorMR = new WPI_TalonSRX(5);  
-public static WPI_TalonSRX motorML = new WPI_TalonSRX(6);
+    public static WPI_TalonSRX motorFR = new WPI_TalonSRX(1);
+    public static WPI_TalonSRX motorFL = new WPI_TalonSRX(2);
+    public static WPI_TalonSRX motorBR = new WPI_TalonSRX(3);
+    public static WPI_TalonSRX motorBL = new WPI_TalonSRX(4);
+    public static WPI_TalonSRX motorMR = new WPI_TalonSRX(5);  
+    public static WPI_TalonSRX motorML = new WPI_TalonSRX(6);
 
-public static Solenoid shifter = new Solenoid(1,0);
+    public static Solenoid fmwiab1 = new Solenoid(1, 2);
+    public static Solenoid fmwiab2 = new Solenoid(1, 3);
+    public static WPI_TalonSRX yoink = new WPI_TalonSRX(7);
+
+    public static Solenoid wheelPusher = new Solenoid(1, 1);
+    public static Solenoid shifter = new Solenoid(1, 0);
 }
