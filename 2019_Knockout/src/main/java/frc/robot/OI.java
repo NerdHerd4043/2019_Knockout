@@ -58,8 +58,8 @@ public class OI {
   Button RetractWheelBtn = new JoystickButton(driveStick, 8);
 
   //4mwiab - Erik
-  Button yoinkerUpBtn = new JoystickButton(driveStick, 1);
-  Button yoinkerDownBtn = new JoystickButton(driveStick, 2);
+  Button YoinkerUpBtn = new JoystickButton(driveStick, 1);
+  Button YoinkerDownBtn = new JoystickButton(driveStick, 2);
   
 
   public OI() {
@@ -67,6 +67,8 @@ public class OI {
     AntiShiftBtn.whenPressed(new AntiShift());
     ExtendWheelBtn.whenPressed(new ExtendWheel());
     RetractWheelBtn.whenPressed(new RetractWheel());
+    YoinkerUpBtn.whenPressed(new YoinkerUp());
+    YoinkerDownBtn.whenPressed(new YoinkerDown());
   }
 
 

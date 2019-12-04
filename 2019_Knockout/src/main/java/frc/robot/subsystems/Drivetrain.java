@@ -79,7 +79,7 @@ public void extendWheel(){
 RobotMap.wheelPusher.set(true);
 }
 
-public void retractwheel(){
+public void retractWheel(){
 RobotMap.wheelPusher.set(false);
 }
 
