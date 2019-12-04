@@ -19,8 +19,9 @@ public class RobotMap {
     public static WPI_TalonSRX motorMR = new WPI_TalonSRX(5);  
     public static WPI_TalonSRX motorML = new WPI_TalonSRX(6);
 
-    public static Solenoid fmwiab = new Solenoid(1, 2);
     public static WPI_TalonSRX motorYoink = new WPI_TalonSRX(7);
+    public static Solenoid fmwiab = new Solenoid(1, 2);
+    //4 men walk into a bar
 
     public static Solenoid wheelPusher = new Solenoid(1, 1);
     public static Solenoid shifter = new Solenoid(1, 0);
