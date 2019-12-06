@@ -61,7 +61,7 @@ public class OI {
   Button YoinkerUpBtn = new JoystickButton(driveStick, 1);
   Button YoinkerDownBtn = new JoystickButton(driveStick, 2);
   
-
+  
   public OI() {
     ShiftBtn.whenPressed(new Shift());
     AntiShiftBtn.whenPressed(new AntiShift());
