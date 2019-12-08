@@ -7,9 +7,9 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.TriggerYoink;
 import frc.robot.Robot;
 
 /**
@@ -18,26 +18,17 @@ import frc.robot.Robot;
 public class Yoinker extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  
+  RobotMap.motorFmwiabR.follow(motorFwiabL);
 
-  public void triggerYoink() {
-    double rightTrigger = Robot.m_oi.getDrivestick().getRawAxis(3);
-    double leftTrigger = Robot.m_oi.getDrivestick().getRawAxis(2);
+  RobotMap.motorFmwiabR.setSafetyEnabled = false;
+  
 
-    RobotMap.motorYoink.set(leftTrigger - rightTrigger);
-  }
-
-  public void yoinkerUp(){
-    RobotMap.fmwiab.set(true);
-    }
-    
-    public void yoinkerDown(){
-    RobotMap.fmwiab.set(false);
-    }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new TriggerYoink());
+   // setDefaultCommand;
   }
 }

@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.POVButton;
 import frc.robot.commands.AntiShift;
 import frc.robot.commands.ExtendWheel;
 import frc.robot.commands.RetractWheel;
@@ -51,24 +52,27 @@ public class OI {
 
   Joystick driveStick = new Joystick(0);
 
-  Button ShiftBtn = new JoystickButton(driveStick, 5);
-  Button AntiShiftBtn = new JoystickButton(driveStick, 6);
+  POVButton AntiShiftBtn = new POVButton(driveStick, 5);
+  POVButton ShiftBtn = new POVButton(driveStick, 1);
 
-  Button ExtendWheelBtn = new JoystickButton(driveStick, 7);
-  Button RetractWheelBtn = new JoystickButton(driveStick, 8);
+  POVButton ExtendWheelBtn = new POVButton(driveStick, 3);
+  POVButton RetractWheelBtn = new POVButton(driveStick, 7);
+
+  Button ThumperResetBtn = new JoystickButton(driveStick, 2);
+  Button YoinkBtn  = new JoystickButton(driveStick, 6);
+  Button YeetBtn = new JoystickButton(driveStick, 5);
 
   //4mwiab - Erik
-  Button YoinkerUpBtn = new JoystickButton(driveStick, 1);
-  Button YoinkerDownBtn = new JoystickButton(driveStick, 2);
-  
+
   
   public OI() {
     ShiftBtn.whenPressed(new Shift());
     AntiShiftBtn.whenPressed(new AntiShift());
     ExtendWheelBtn.whenPressed(new ExtendWheel());
     RetractWheelBtn.whenPressed(new RetractWheel());
-    YoinkerUpBtn.whenPressed(new YoinkerUp());
-    YoinkerDownBtn.whenPressed(new YoinkerDown());
+    YeetBtn.whenPressed(new Yeet());
+    YoinkBtn.whenPressed(new Yoink());
+    
   }
 
 

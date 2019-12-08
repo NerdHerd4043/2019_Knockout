@@ -7,12 +7,14 @@
 
 package frc.robot.commands;
 
+import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class YoinkerUp extends Command {
-  public YoinkerUp() {
+public class Yoink extends Command {
+  public Yoink() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.yoinker);
   }
 
   // Called just before this Command runs the first time

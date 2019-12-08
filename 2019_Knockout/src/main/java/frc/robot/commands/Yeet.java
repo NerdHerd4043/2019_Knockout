@@ -7,13 +7,14 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import edu.wpi.first.wpilibj.command.Command;
 
-public class TriggerYoink extends Command {
-  public TriggerYoink() {
+public class Yeet extends Command {
+  public Yeet() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.yoinker);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +25,6 @@ public class TriggerYoink extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.yoinker.triggerYoink();
   }
 
   // Make this return true when this Command no longer needs to run execute()
