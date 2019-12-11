@@ -11,12 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
-import frc.robot.commands.AntiShift;
-import frc.robot.commands.ExtendWheel;
-import frc.robot.commands.RetractWheel;
-import frc.robot.commands.Shift;
+import frc.robot.commands.*;
 
-//import frc.robot.commands.*;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -62,16 +58,14 @@ public class OI {
   Button YoinkBtn  = new JoystickButton(driveStick, 6);
   Button YeetBtn = new JoystickButton(driveStick, 5);
 
-  //4mwiab - Erik
-
   
   public OI() {
     ShiftBtn.whenPressed(new Shift());
     AntiShiftBtn.whenPressed(new AntiShift());
     ExtendWheelBtn.whenPressed(new ExtendWheel());
     RetractWheelBtn.whenPressed(new RetractWheel());
-    YeetBtn.whenPressed(new Yeet());
-    YoinkBtn.whenPressed(new Yoink());
+    YeetBtn.whenPressed(new TriggerYeet());
+    YoinkBtn.whenPressed(new TriggerYoink());
     
   }
 

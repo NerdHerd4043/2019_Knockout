@@ -7,17 +7,20 @@
 
 package frc.robot.commands;
 
+import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class YoinkerUp extends Command {
-  public YoinkerUp() {
+public class TriggerYoink extends Command {
+  public TriggerYoink() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.yoinker);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.yoinker.toggleYoink();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -28,7 +31,7 @@ public class YoinkerUp extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

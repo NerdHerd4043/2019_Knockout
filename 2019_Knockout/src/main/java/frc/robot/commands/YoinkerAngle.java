@@ -7,11 +7,11 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
-public class Yeet extends Command {
-  public Yeet() {
+public class YoinkerAngle extends Command {
+  public YoinkerAngle() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.yoinker);
@@ -20,6 +20,7 @@ public class Yeet extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.yoinker.setYoinkerAngle();
   }
 
   // Called repeatedly when this Command is scheduled to run
