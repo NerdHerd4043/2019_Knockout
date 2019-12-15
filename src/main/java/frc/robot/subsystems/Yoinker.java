@@ -15,18 +15,16 @@ import frc.robot.Robot;
  * Add your docs here.
  */
 public class Yoinker extends Subsystem {
-  private boolean yeetControl = false;
-  private boolean yoinkControl = false;
  
-  public void toggleYeet(){
-    yeetControl = !yeetControl;
+  public void yeet(){
+    RobotMap.motorYoink.set(1);
   }
-
-  public void toggleYoink(){
-    yoinkControl = !yoinkControl;
-
+  public void yoink(){
+    RobotMap.motorYoink.set(-1);
   }
-
+  public void stopYeet(){
+    RobotMap.motorYoink.set(0);
+  }
   
   public void setYoinkerAngle() {
     RobotMap.motorFmwiabL.follow(RobotMap.motorFmwiabR);
