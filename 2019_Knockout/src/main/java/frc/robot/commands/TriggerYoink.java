@@ -20,12 +20,12 @@ public class TriggerYoink extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.yoinker.toggleYoink();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.yoinker.yoink();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -37,7 +37,6 @@ public class TriggerYoink extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.yoinker.stopYeet();
   }
 
   // Called when another command which requires one or more of the same

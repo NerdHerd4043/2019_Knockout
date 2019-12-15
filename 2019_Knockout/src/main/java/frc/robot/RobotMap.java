@@ -19,6 +19,7 @@ public class RobotMap {
     public static WPI_TalonSRX motorMR = new WPI_TalonSRX(5);
     public static WPI_TalonSRX motorML = new WPI_TalonSRX(6);
 
+    public static WPI_TalonSRX motorTubbThump = new WPI_TalonSRX(8);
     public static WPI_TalonSRX motorYoink = new WPI_TalonSRX(7);
     public static WPI_TalonSRX motorFmwiabR = new WPI_TalonSRX(9);
     public static WPI_TalonSRX motorFmwiabL = new WPI_TalonSRX(10);
