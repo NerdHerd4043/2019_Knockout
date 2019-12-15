@@ -26,19 +26,19 @@ public class Drivetrain extends Subsystem {
   double inputStrafe;
 
 public Drivetrain(){
-super();
-diffDrive = new DifferentialDrive(RobotMap.motorFL, RobotMap.motorFR);
+  super();
+  diffDrive = new DifferentialDrive(RobotMap.motorFL, RobotMap.motorFR);
 
-RobotMap.motorBL.follow(RobotMap.motorFL);
-RobotMap.motorBR.follow(RobotMap.motorFR);
-RobotMap.motorML.follow(RobotMap.motorMR);
+  RobotMap.motorBL.follow(RobotMap.motorFL);
+  RobotMap.motorBR.follow(RobotMap.motorFR);
+  RobotMap.motorML.follow(RobotMap.motorMR);
 
-RobotMap.motorBL.setSafetyEnabled(false);
-    RobotMap.motorFL.setSafetyEnabled(false);
-    RobotMap.motorBR.setSafetyEnabled(false);
-    RobotMap.motorFR.setSafetyEnabled(false);
-    RobotMap.motorMR.setSafetyEnabled(false);
-    RobotMap.motorML.setSafetyEnabled(false);
+  RobotMap.motorBL.setSafetyEnabled(false);
+  RobotMap.motorFL.setSafetyEnabled(false);
+  RobotMap.motorBR.setSafetyEnabled(false);
+  RobotMap.motorFR.setSafetyEnabled(false);
+  RobotMap.motorMR.setSafetyEnabled(false);
+  RobotMap.motorML.setSafetyEnabled(false);
 }
 
 public void drive(Joystick joy){
