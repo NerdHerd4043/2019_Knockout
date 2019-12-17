@@ -111,7 +111,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    
+    Robot.yoinker.yoink();
     Scheduler.getInstance().run();
   }
 
