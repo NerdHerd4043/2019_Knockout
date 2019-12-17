@@ -37,8 +37,8 @@ public class OI {
     AntiShiftBtn.whenPressed(new AntiShift());
     ExtendWheelBtn.whenPressed(new ExtendWheel());
     RetractWheelBtn.whenPressed(new RetractWheel());
-    YeetBtn.whenPressed(new TriggerYeet());
-    YoinkBtn.whenPressed(new TriggerYoink());
+    // YeetBtn.whenPressed(new TriggerYeet());
+    // YoinkBtn.whenPressed(new TriggerYoink());
     
   }
 

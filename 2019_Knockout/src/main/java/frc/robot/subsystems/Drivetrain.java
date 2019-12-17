@@ -27,16 +27,16 @@ public class Drivetrain extends Subsystem {
 
 public Drivetrain(){
   super();
-  diffDrive = new DifferentialDrive(RobotMap.motorFL, RobotMap.motorFR);
+  diffDrive = new DifferentialDrive(RobotMap.motorLF, RobotMap.motorRF);
 
-  RobotMap.motorBL.follow(RobotMap.motorFL);
-  RobotMap.motorBR.follow(RobotMap.motorFR);
+  RobotMap.motorLB.follow(RobotMap.motorLF);
+  RobotMap.motorRB.follow(RobotMap.motorRF);
   RobotMap.motorML.follow(RobotMap.motorMR);
 
-  RobotMap.motorBL.setSafetyEnabled(false);
-  RobotMap.motorFL.setSafetyEnabled(false);
-  RobotMap.motorBR.setSafetyEnabled(false);
-  RobotMap.motorFR.setSafetyEnabled(false);
+  RobotMap.motorLB.setSafetyEnabled(false);
+  RobotMap.motorLF.setSafetyEnabled(false);
+  RobotMap.motorRB.setSafetyEnabled(false);
+  RobotMap.motorRF.setSafetyEnabled(false);
   RobotMap.motorMR.setSafetyEnabled(false);
   RobotMap.motorML.setSafetyEnabled(false);
 }

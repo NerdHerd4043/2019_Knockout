@@ -12,17 +12,16 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class RobotMap {
-    public static WPI_TalonSRX motorFR = new WPI_TalonSRX(1);
-    public static WPI_TalonSRX motorFL = new WPI_TalonSRX(2);
-    public static WPI_TalonSRX motorBR = new WPI_TalonSRX(3);
-    public static WPI_TalonSRX motorBL = new WPI_TalonSRX(4);
-    public static WPI_TalonSRX motorMR = new WPI_TalonSRX(5);
-    public static WPI_TalonSRX motorML = new WPI_TalonSRX(6);
+    public static WPI_TalonSRX motorRF = new WPI_TalonSRX(6);
+    public static WPI_TalonSRX motorRB = new WPI_TalonSRX(5);
+    public static WPI_TalonSRX motorLF = new WPI_TalonSRX(2);
+    public static WPI_TalonSRX motorLB = new WPI_TalonSRX(1);
+    public static WPI_TalonSRX motorMR = new WPI_TalonSRX(7);
+    public static WPI_TalonSRX motorML = new WPI_TalonSRX(8);
 
-    public static WPI_TalonSRX motorTubbThump = new WPI_TalonSRX(8);
-    public static WPI_TalonSRX motorYoink = new WPI_TalonSRX(7);
-    public static WPI_TalonSRX motorFmwiabR = new WPI_TalonSRX(9);
-    public static WPI_TalonSRX motorFmwiabL = new WPI_TalonSRX(10);
+    public static WPI_TalonSRX motorYoink = new WPI_TalonSRX(100);
+    public static WPI_TalonSRX motorFmwiabR = new WPI_TalonSRX(4);
+    public static WPI_TalonSRX motorFmwiabL = new WPI_TalonSRX(3);
                              //4 men walk into a bar
 
     public static Solenoid wheelPusher = new Solenoid(1, 1);
