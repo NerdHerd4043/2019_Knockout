@@ -21,11 +21,11 @@ public class OI {
 
   Joystick driveStick = new Joystick(0);
 
-  POVButton AntiShiftBtn = new POVButton(driveStick, 5);
-  POVButton ShiftBtn = new POVButton(driveStick, 1);
+  POVButton AntiShiftBtn = new POVButton(driveStick, 180);
+  POVButton ShiftBtn = new POVButton(driveStick, 0);
 
-  POVButton ExtendWheelBtn = new POVButton(driveStick, 3);
-  POVButton RetractWheelBtn = new POVButton(driveStick, 7);
+  POVButton ExtendWheelBtn = new POVButton(driveStick, 90);
+  POVButton RetractWheelBtn = new POVButton(driveStick, 270);
 
   Button ThumperResetBtn = new JoystickButton(driveStick, 2);
   Button YoinkBtn  = new JoystickButton(driveStick, 6);

@@ -42,13 +42,13 @@ public Drivetrain(){
 }
 
 public void drive(Joystick joy){
-if (Robot.arcadeDrive.getBoolean(true)){
+// if (Robot.arcadeDrive.getBoolean(true)){
   inputSpeed = -joy.getRawAxis(1);
   inputTurn = joy.getRawAxis(4);
-} else {
-  inputSpeed = -joy.getRawAxis(1);
-  inputTurn = joy.getRawAxis(5);
-}
+// } else {
+  // inputSpeed = -joy.getRawAxis(1);
+  // inputTurn = joy.getRawAxis(5);
+// }
   drive(inputSpeed, inputTurn);
   inputStrafe = joy.getRawAxis(0);
   strafe(inputStrafe);
@@ -56,15 +56,15 @@ if (Robot.arcadeDrive.getBoolean(true)){
 
 
 public void drive(double speed, double turn){
-  if (Robot.arcadeDrive.getBoolean(true)){
-    diffDrive.arcadeDrive(speed, turn, true);
-  } else {
-    diffDrive.tankDrive(speed, turn, true);
-  }
+  // if (Robot.arcadeDrive.getBoolean(true)){
+    diffDrive.arcadeDrive(-speed, -turn, true);
+  // } else {
+    // diffDrive.tankDrive(speed, turn, true);
+  // }
 }
 
 public void strafe(double inputStrafe){
-  RobotMap.motorMR.set(inputStrafe);
+  RobotMap.motorMR.set(-inputStrafe);
 }
 
 public void shift() {

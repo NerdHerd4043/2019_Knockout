@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.YoinkerAngle;
 import frc.robot.Robot;
 
 /**
@@ -30,13 +31,14 @@ public class Yoinker extends Subsystem {
     double rightTrigger = Robot.m_oi.getDrivestick().getRawAxis(3);
     double leftTrigger = Robot.m_oi.getDrivestick().getRawAxis(2);
 
-    RobotMap.motorFmwiabR.set(leftTrigger - rightTrigger);
+    // System.out.println(leftTrigger - rightTrigger);
+    RobotMap.motorFmwiabR.set((leftTrigger - rightTrigger)/4);
   }
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-   // setDefaultCommand;
+   setDefaultCommand(new YoinkerAngle());
   }
 }
