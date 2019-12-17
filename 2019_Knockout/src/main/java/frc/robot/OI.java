@@ -28,10 +28,9 @@ public class OI {
   POVButton RetractWheelBtn = new POVButton(driveStick, 7);
 
   Button ThumperResetBtn = new JoystickButton(driveStick, 2);
-  Button YoinkBtn  = new JoystickButton(driveStick, 6);
+  Button YoinkBtn = new JoystickButton(driveStick, 6);
   Button YeetBtn = new JoystickButton(driveStick, 5);
 
-  
   public OI() {
     ShiftBtn.whenPressed(new Shift());
     AntiShiftBtn.whenPressed(new AntiShift());
@@ -41,8 +40,7 @@ public class OI {
     YoinkBtn.whenPressed(new TriggerYoink());
   }
 
-
-  public Joystick getDrivestick(){
+  public Joystick getDrivestick() {
     return driveStick;
   }
 }
