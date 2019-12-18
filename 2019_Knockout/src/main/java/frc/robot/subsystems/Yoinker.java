@@ -23,18 +23,18 @@ public class Yoinker extends Subsystem {
   public void yoink() {
     RobotMap.motorYoink.set(-1);
   }
-  
+
   public void stopYeet() {
-    RobotMap.motorYoink.set(-0.1);
+    RobotMap.motorYoink.set(0);
   }
-  
+
   public void setYoinkerAngle() {
     RobotMap.motorFmwiabL.follow(RobotMap.motorFmwiabR);
     double rightTrigger = Robot.m_oi.getDrivestick().getRawAxis(3);
     double leftTrigger = Robot.m_oi.getDrivestick().getRawAxis(2);
 
     // System.out.println(leftTrigger - rightTrigger);
-    RobotMap.motorFmwiabR.set((leftTrigger - rightTrigger)/4);
+    RobotMap.motorFmwiabR.set((leftTrigger - rightTrigger) / 4);
   }
 
   @Override
