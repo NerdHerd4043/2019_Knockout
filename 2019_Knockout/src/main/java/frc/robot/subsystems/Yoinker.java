@@ -22,8 +22,8 @@ public class Yoinker extends Subsystem {
   public void yoink(){
     RobotMap.motorYoink.set(-1);
   }
-  public void stopYoinker(){
-    RobotMap.motorYoink.set(0);
+  public void stopYeet(){
+    RobotMap.motorYoink.set(-0.1);
   }
   
   public void setYoinkerAngle() {

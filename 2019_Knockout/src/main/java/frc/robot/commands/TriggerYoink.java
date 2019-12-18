@@ -37,7 +37,6 @@ public class TriggerYoink extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.yoinker.stopYoinker();
   }
 
   // Called when another command which requires one or more of the same

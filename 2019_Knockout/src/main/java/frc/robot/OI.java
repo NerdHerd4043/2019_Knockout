@@ -21,15 +21,16 @@ public class OI {
 
   Joystick driveStick = new Joystick(0);
 
-  POVButton AntiShiftBtn = new POVButton(driveStick, 180);
-  POVButton ShiftBtn = new POVButton(driveStick, 0);
+  Button AntiShiftBtn = new JoystickButton(driveStick, 5);
+  Button ShiftBtn = new JoystickButton(driveStick, 6);
 
-  POVButton ExtendWheelBtn = new POVButton(driveStick, 90);
-  POVButton RetractWheelBtn = new POVButton(driveStick, 270);
+  Button ExtendWheelBtn = new JoystickButton(driveStick, 2);
+  Button RetractWheelBtn = new JoystickButton(driveStick, 1);
 
   Button ThumperResetBtn = new JoystickButton(driveStick, 2);
-  Button YoinkBtn  = new JoystickButton(driveStick, 6);
-  Button YeetBtn = new JoystickButton(driveStick, 5);
+  POVButton YoinkBtn  = new POVButton(driveStick, 180);
+  POVButton YeetBtn = new POVButton(driveStick, 0);
+  POVButton StopYeetBtn = new POVButton(driveStick, -1);
 
   
   public OI() {
@@ -39,6 +40,7 @@ public class OI {
     RetractWheelBtn.whenPressed(new RetractWheel());
     // YeetBtn.whenPressed(new TriggerYeet());
     // YoinkBtn.whenPressed(new TriggerYoink());
+    // StopYeetBtn.whenPressed(new StopYeet());
     
   }
 
