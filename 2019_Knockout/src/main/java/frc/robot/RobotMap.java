@@ -8,6 +8,7 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Solenoid;
 
@@ -19,7 +20,7 @@ public class RobotMap {
     public static WPI_TalonSRX motorMR = new WPI_TalonSRX(7);
     public static WPI_TalonSRX motorML = new WPI_TalonSRX(8);
 
-    public static WPI_TalonSRX motorYoink = new WPI_TalonSRX(100);
+    public static WPI_VictorSPX motorYoink = new WPI_VictorSPX(1);
     public static WPI_TalonSRX motorFmwiabR = new WPI_TalonSRX(4);
     public static WPI_TalonSRX motorFmwiabL = new WPI_TalonSRX(3);
                              //4 men walk into a bar
