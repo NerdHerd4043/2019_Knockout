@@ -16,13 +16,15 @@ import frc.robot.Robot;
  * Add your docs here.
  */
 public class Yoinker extends Subsystem {
-  public void yeet(){
+  public void yeet() {
     RobotMap.motorYoink.set(1);
   }
-  public void yoink(){
+
+  public void yoink() {
     RobotMap.motorYoink.set(-1);
   }
-  public void stopYeet(){
+  
+  public void stopYeet() {
     RobotMap.motorYoink.set(-0.1);
   }
   
@@ -39,6 +41,6 @@ public class Yoinker extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-   setDefaultCommand(new YoinkerAngle());
+    setDefaultCommand(new YoinkerAngle());
   }
 }

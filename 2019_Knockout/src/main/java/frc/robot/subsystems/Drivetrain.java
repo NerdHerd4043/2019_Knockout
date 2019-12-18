@@ -41,21 +41,21 @@ public Drivetrain(){
   RobotMap.motorML.setSafetyEnabled(false);
 }
 
-public void drive(Joystick joy){
-// if (Robot.arcadeDrive.getBoolean(true)){
-  inputSpeed = -joy.getRawAxis(1);
-  inputTurn = joy.getRawAxis(4);
-// } else {
-  // inputSpeed = -joy.getRawAxis(1);
-  // inputTurn = joy.getRawAxis(5);
-// }
+public void drive(Joystick joy) {
+  // if (Robot.arcadeDrive.getBoolean(true)){
+    inputSpeed = -joy.getRawAxis(1);
+    inputTurn = joy.getRawAxis(4);
+  // } else {
+    // inputSpeed = -joy.getRawAxis(1);
+    // inputTurn = joy.getRawAxis(5);
+  // }
   drive(inputSpeed, inputTurn);
   inputStrafe = joy.getRawAxis(0);
   strafe(inputStrafe);
 }
 
 
-public void drive(double speed, double turn){
+public void drive(double speed, double turn) {
   // if (Robot.arcadeDrive.getBoolean(true)){
     diffDrive.arcadeDrive(-speed, -turn, true);
   // } else {
@@ -63,7 +63,7 @@ public void drive(double speed, double turn){
   // }
 }
 
-public void strafe(double inputStrafe){
+public void strafe(double inputStrafe) {
   RobotMap.motorMR.set(-inputStrafe);
 }
 
@@ -75,11 +75,11 @@ public void antiShift() {
   RobotMap.shifter.set(false);
 }
 
-public void extendWheel(){
+public void extendWheel() {
 RobotMap.wheelPusher.set(true);
 }
 
-public void retractWheel(){
+public void retractWheel() {
 RobotMap.wheelPusher.set(false);
 }
 

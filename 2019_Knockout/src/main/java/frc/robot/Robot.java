@@ -72,6 +72,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+    Robot.drivetrain.retractWheel();
   }
 
   @Override
@@ -86,7 +87,8 @@ public class Robot extends TimedRobot {
    * LabVIEW Dashboard, remove all of the chooser code and uncomment the
    * getString code to get the auto name from the text box below the Gyro
    *
-   * <p>You can add additional auto modes by adding additional commands to the
+   * <p>
+   * You can add additional auto modes by adding additional commands to the
    * chooser code above (like the commented example) or additional comparisons
    * to the switch structure below with additional strings & commands.
    */
@@ -112,12 +114,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    
+    Robot.yoinker.stopYeet();
     Scheduler.getInstance().run();
   }
 
   @Override
   public void teleopInit() {
+    Robot.drivetrain.extendWheel();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
