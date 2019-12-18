@@ -21,15 +21,15 @@ public class OI {
 
   Joystick driveStick = new Joystick(0);
 
-  Button AntiShiftBtn = new JoystickButton(driveStick, 5);
-  Button ShiftBtn = new JoystickButton(driveStick, 6);
+  Button AntiShiftBtn = new JoystickButton(driveStick, 5);    // B maybe?
+  Button ShiftBtn = new JoystickButton(driveStick, 6);        // A maybe?
 
-  Button ExtendWheelBtn = new JoystickButton(driveStick, 2);
-  Button RetractWheelBtn = new JoystickButton(driveStick, 1);
+  Button ExtendWheelBtn = new JoystickButton(driveStick, 2);  // DPAD left
+  Button RetractWheelBtn = new JoystickButton(driveStick, 1); // DPAD RIght
 
-  Button YoinkBtn = new JoystickButton(driveStick, 3);
-  Button YeetBtn = new JoystickButton(driveStick, 4);
-  POVButton StopYeetBtn = new POVButton(driveStick, -1);
+  Button YoinkBtn = new JoystickButton(driveStick, 3);        // Right bumper hold
+  Button YeetBtn = new JoystickButton(driveStick, 4);         // Left bumber hold
+  POVButton StopYeetBtn = new POVButton(driveStick, -1);      // No bumbers held
 
   public OI() {
     ShiftBtn.whenPressed(new Shift());
