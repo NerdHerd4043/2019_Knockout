@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.Robot;
 // import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.Drive;
@@ -24,6 +25,13 @@ public class Drivetrain extends Subsystem {
   double inputSpeed;
   double inputTurn;
   double inputStrafe;
+
+  double initInputSpeed;
+  double initInputStrafe;
+  double sn;
+  double cs;
+  double radians;
+
 
 public Drivetrain(){
   super();
@@ -41,26 +49,33 @@ public Drivetrain(){
   RobotMap.motorML.setSafetyEnabled(false);
 }
 
-public void drive(Joystick joy) {
-  // if (Robot.arcadeDrive.getBoolean(true)){
-    inputSpeed = -joy.getRawAxis(1);
-    inputTurn = joy.getRawAxis(4);
-  // } else {
-    // inputSpeed = -joy.getRawAxis(1);
-    // inputTurn = joy.getRawAxis(5);
-  // }
-  drive(inputSpeed, inputTurn);
-  inputStrafe = joy.getRawAxis(0);
-  strafe(inputStrafe);
+public void drive(Joystick joy) { 
+  if (!Robot.fieldOriented.getBoolean(false)){
+    inputSpeed = joy.getRawAxis(1);
+    inputStrafe = joy.getRawAxis(0);
+
+    inputTurn = -joy.getRawAxis(4);
+  } else {
+    initInputSpeed = joy.getRawAxis(1);
+    initInputStrafe = joy.getRawAxis(0);
+    
+    radians = Math.toRadians(Robot.ahrs.getAngle());
+    cs = Math.cos(radians);
+    sn = Math.sin(radians);
+
+    inputSpeed = initInputSpeed * cs - initInputStrafe * sn;
+    inputStrafe = initInputSpeed * sn + initInputStrafe * cs;
+
+    inputTurn = -joy.getRawAxis(4);
+  }
+
+  drive(inputSpeed, inputTurn, inputStrafe);
 }
 
 
-public void drive(double speed, double turn) {
-  // if (Robot.arcadeDrive.getBoolean(true)){
-    diffDrive.arcadeDrive(-speed, -turn, true);
-  // } else {
-    // diffDrive.tankDrive(speed, turn, true);
-  // }
+public void drive(double speed, double turn, double strafe) {
+    diffDrive.arcadeDrive(speed, turn, true);
+    strafe(inputStrafe);
 }
 
 public void strafe(double inputStrafe) {

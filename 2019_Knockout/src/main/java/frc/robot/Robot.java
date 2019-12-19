@@ -7,11 +7,14 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
 
@@ -28,14 +31,14 @@ public class Robot extends TimedRobot {
 
   public static Drivetrain drivetrain;
   public static Yoinker yoinker;
+  public static Fmwiab fmwiab;
 
-  public static NetworkTableEntry arcadeDrive;
+  public static AHRS ahrs;
+
+  public static NetworkTableEntry fieldOriented;
 
 //always add last
   public static OI m_oi;
-
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /**
    * This function is run when the robot is first started up and should be
@@ -43,13 +46,29 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-
     drivetrain = new Drivetrain();
     yoinker = new Yoinker();
+    fmwiab = new Fmwiab();
+
+    ahrs = new AHRS(SPI.Port.kMXP); 
+
+    ShuffleboardTab shuffTab = Shuffleboard.getTab("Drive");
+
+    fieldOriented = shuffTab
+      .add("Field Oriented", false) 
+      .withWidget(BuiltInWidgets.kToggleButton)
+      .withPosition(2, 0)
+      .withSize(1, 3)
+      .getEntry();
     
+    shuffTab
+      .add("Gyro", ahrs)
+      .withWidget(BuiltInWidgets.kGyro)
+      .withPosition(0, 0)
+      .withSize(2, 3);
+
     m_oi = new OI();
     // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
   }
 
   /**
@@ -62,6 +81,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    // navxAngle.setDouble(ahrs.getAngle());
+    // System.out.println(m_oi.getDrivestick().getRawButton(5));
     // System.out.println(m_oi.getDrivestick().getPOV());
   }
 
@@ -94,19 +115,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
-
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
-     */
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
   }
 
   /**
@@ -121,13 +129,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     Robot.drivetrain.extendWheel();
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
   }
 
   /**
@@ -143,5 +144,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    System.out.println(ahrs.getAngle());
   }
 }

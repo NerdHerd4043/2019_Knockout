@@ -21,24 +21,25 @@ public class OI {
 
   Joystick driveStick = new Joystick(0);
 
-  Button AntiShiftBtn = new JoystickButton(driveStick, 5);    // B maybe?
-  Button ShiftBtn = new JoystickButton(driveStick, 6);        // A maybe?
+  Button navxresetButton = new JoystickButton(driveStick, 8);
 
-  Button ExtendWheelBtn = new JoystickButton(driveStick, 2);  // DPAD left
-  Button RetractWheelBtn = new JoystickButton(driveStick, 1); // DPAD RIght
+  Button AntiShiftBtn = new JoystickButton(driveStick, 3);    // X maybe?
+  Button ShiftBtn = new JoystickButton(driveStick, 1);        // A maybe?
 
-  Button YoinkBtn = new JoystickButton(driveStick, 3);        // Right bumper hold
-  Button YeetBtn = new JoystickButton(driveStick, 4);         // Left bumber hold
-  POVButton StopYeetBtn = new POVButton(driveStick, -1);      // No bumbers held
+  POVButton ExtendWheelBtn = new POVButton(driveStick, 270);  // DPAD left
+  POVButton RetractWheelBtn = new POVButton(driveStick, 90);  // DPAD RIght
+
+  Button YoinkBtn = new JoystickButton(driveStick, 6);        // Right bumper toggle
+  Button YeetBtn = new JoystickButton(driveStick, 5);         // Left bumber toggle
 
   public OI() {
+    navxresetButton.whenPressed(new ResetNavx());
     ShiftBtn.whenPressed(new Shift());
     AntiShiftBtn.whenPressed(new AntiShift());
     ExtendWheelBtn.whenPressed(new ExtendWheel());
     RetractWheelBtn.whenPressed(new RetractWheel());
-    YeetBtn.whenPressed(new TriggerYeet());
-    YoinkBtn.whenPressed(new TriggerYoink());
-    StopYeetBtn.whenPressed(new StopYeet());
+    YeetBtn.toggleWhenPressed(new TriggerYeet());
+    YoinkBtn.toggleWhenPressed(new TriggerYoink());
   }
 
   public Joystick getDrivestick() {

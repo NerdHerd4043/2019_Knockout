@@ -7,14 +7,14 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
-public class TriggerYoink extends Command {
-  public TriggerYoink() {
+public class FmwiabAngle extends Command {
+  public FmwiabAngle() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.yoinker);
+    requires(Robot.fmwiab);
   }
 
   // Called just before this Command runs the first time
@@ -25,11 +25,7 @@ public class TriggerYoink extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.m_oi.getDrivestick().getRawButton(6)){
-      Robot.yoinker.yoink();
-    } else {
-      Robot.yoinker.yoink(-0.1);
-    }
+    Robot.fmwiab.setFmwiabAngle();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -41,7 +37,7 @@ public class TriggerYoink extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.yoinker.stopYeet();
+    Robot.fmwiab.setFmwiabAngle();
   }
 
   // Called when another command which requires one or more of the same
