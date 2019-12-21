@@ -36,8 +36,8 @@ public class OI {
     navxresetButton.whenPressed(new ResetNavx());
     ShiftBtn.whenPressed(new Shift());
     AntiShiftBtn.whenPressed(new AntiShift());
-    ExtendWheelBtn.whenPressed(new ExtendWheel());
-    RetractWheelBtn.whenPressed(new RetractWheel());
+    // ExtendWheelBtn.whenPressed(new ExtendWheel());
+    // RetractWheelBtn.whenPressed(new RetractWheel());
     YeetBtn.toggleWhenPressed(new TriggerYeet());
     YoinkBtn.toggleWhenPressed(new TriggerYoink());
   }

@@ -27,6 +27,10 @@ public class Fmwiab extends Subsystem {
     // System.out.println(leftTrigger - rightTrigger);
     RobotMap.motorFmwiabR.set((leftTrigger - rightTrigger) / 3);
   }
+  
+  public void setFmwiabAngle(double speed) { 
+    RobotMap.motorFmwiabR.set(speed / 3);
+  }
 
   @Override
   public void initDefaultCommand() {

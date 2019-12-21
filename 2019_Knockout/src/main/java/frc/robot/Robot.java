@@ -9,10 +9,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import frc.robot.commands.*;
 
 import com.kauailabs.navx.frc.AHRS;
 
@@ -39,6 +41,8 @@ public class Robot extends TimedRobot {
 
   private static final double cpr = 360; //if am-3132
   private static final double whd = 6; // for 6 inch wheel
+
+  public static Command m_autonomousCommand;
 
   public static NetworkTableEntry fieldOriented;
 
@@ -106,9 +110,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    Robot.drivetrain.retractWheel();
-    RobotMap.motorRB.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 10);
-    RobotMap.motorLB.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 10);
+    // Robot.drivetrain.retractWheel();
   }
 
   @Override
@@ -130,6 +132,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+    m_autonomousCommand = new Auto();
+    
+    System.out.println("auto");
+    if (m_autonomousCommand != null) {
+      System.out.println("auto again");
+			m_autonomousCommand.start();
+		}
   }
 
   /**
@@ -143,7 +152,10 @@ public class Robot extends TimedRobot {
 
   @Override 
   public void teleopInit() {
-    Robot.drivetrain.extendWheel();
+    if (m_autonomousCommand != null) {
+			m_autonomousCommand.cancel();
+		}
+    // Robot.drivetrain.extendWheel();
   }
 
   /**
