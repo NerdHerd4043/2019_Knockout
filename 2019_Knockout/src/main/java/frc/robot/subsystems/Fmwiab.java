@@ -25,7 +25,11 @@ public class Fmwiab extends Subsystem {
     double leftTrigger = Robot.m_oi.getDrivestick().getRawAxis(2);
 
     // System.out.println(leftTrigger - rightTrigger);
-    RobotMap.motorFmwiabR.set((leftTrigger - rightTrigger) / 3.5);
+    RobotMap.motorFmwiabR.set((leftTrigger - rightTrigger) / 3);
+  }
+  
+  public void setFmwiabAngle(double speed) { 
+    RobotMap.motorFmwiabR.set(speed / 3);
   }
 
   @Override

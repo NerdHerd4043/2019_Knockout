@@ -15,7 +15,7 @@ import frc.robot.RobotMap;
  */
 public class Yoinker extends Subsystem {
   public void yeet() {
-    RobotMap.motorYoink.set(.75);
+    RobotMap.motorYoink.set(1);
   }
 
   public void yoink() {
