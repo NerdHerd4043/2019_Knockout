@@ -18,6 +18,8 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+
 import frc.robot.subsystems.*;
 
 /**
@@ -35,10 +37,13 @@ public class Robot extends TimedRobot {
 
   public static AHRS ahrs;
 
+  private static final double cpr = 360; //if am-3132
+  private static final double whd = 6; // for 6 inch wheel
+
   public static NetworkTableEntry fieldOriented;
 
 //always add last
-  public static OI m_oi;
+  public static OI m_oi;  
 
   /**
    * This function is run when the robot is first started up and should be
@@ -51,6 +56,14 @@ public class Robot extends TimedRobot {
     fmwiab = new Fmwiab();
 
     ahrs = new AHRS(SPI.Port.kMXP); 
+
+
+    RobotMap.motorRB.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 10);
+    RobotMap.motorLB.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 10);
+    RobotMap.motorRB.setSelectedSensorPosition(0, 0, 10);
+		RobotMap.motorLB.setSelectedSensorPosition(0, 0, 10);
+    // rightEncoder = new Encoder(0, 1);
+    // rightEncoder.setDistancePerPulse(Math.PI*whd/cpr); //distance per pulse is pi* (wheel diameter / counts per revolution)
 
     ShuffleboardTab shuffTab = Shuffleboard.getTab("Drive");
 
@@ -94,6 +107,8 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledInit() {
     Robot.drivetrain.retractWheel();
+    RobotMap.motorRB.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 10);
+    RobotMap.motorLB.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 10);
   }
 
   @Override
@@ -105,7 +120,7 @@ public class Robot extends TimedRobot {
    * This autonomous (along with the chooser code above) shows how to select
    * between different autonomous modes using the dashboard. The sendable
    * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabVIEW Dashboard, remove all of the chooser code and uncomment the
+   * LabVIEW Dashboard, rem ove all of the chooser code and uncomment the
    * getString code to get the auto name from the text box below the Gyro
    *
    * <p>
@@ -126,7 +141,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
   }
 
-  @Override
+  @Override 
   public void teleopInit() {
     Robot.drivetrain.extendWheel();
   }
@@ -144,6 +159,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-    System.out.println(ahrs.getAngle());
+    // System.out.println(ahrs.getAngle());
+    System.out.print("R: " + RobotMap.motorRB.getSelectedSensorPosition(0) + "\t");
+    System.out.println("L: " + RobotMap.motorLB.getSelectedSensorPosition(0) + "\t");
+
   }
 }

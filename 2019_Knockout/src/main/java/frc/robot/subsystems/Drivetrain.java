@@ -71,7 +71,7 @@ public void drive(Joystick joy) {
 
   drive(inputSpeed, inputTurn, inputStrafe);
 }
-
+  
 
 public void drive(double speed, double turn, double strafe) {
     diffDrive.arcadeDrive(speed, turn, true);
@@ -79,7 +79,12 @@ public void drive(double speed, double turn, double strafe) {
 }
 
 public void strafe(double inputStrafe) {
-  RobotMap.motorMR.set(-inputStrafe);
+  if(-inputStrafe < 0) {
+    RobotMap.motorMR.set(-(inputStrafe * inputStrafe));
+  } else {
+    RobotMap.motorMR.set(inputStrafe * inputStrafe);
+  }
+  
 }
 
 public void shift() {
