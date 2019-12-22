@@ -8,34 +8,33 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
 import frc.robot.Robot;
-import frc.robot.commands.*;
 
 /**
  * Add your docs here.
  */
-public class Fmwiab extends Subsystem {
+public class AngleSub extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public void setFmwiabAngle() {
-    RobotMap.motorFmwiabL.follow(RobotMap.motorFmwiabR);
-    double rightTrigger = Robot.m_oi.getDrivestick().getRawAxis(3);
-    double leftTrigger = Robot.m_oi.getDrivestick().getRawAxis(2);
+  public double turnToAngle(double wantedAngle){ //Takes in a wanted angle and returns the turnSpeed to get there
+		double currentAngle = Robot.ahrs.getAngle(); //In order to determine where we are, take in the current gyro value from the navx
+		double rotateSpeed;
+		
+		if (currentAngle > wantedAngle + 2) { 					//If we are too far to the right of where we want to be...
+			rotateSpeed = -.7d;	//turn left (negative number)
+		} else if (currentAngle < wantedAngle - 2) {			//Otherwise, if we are too far left ...
+			rotateSpeed = .7d;	//turn right (positive number)
+		} else {												//If we are right on track ...
+			rotateSpeed = 0d;									//don't rotate
+		}
+		
+		return rotateSpeed;
+	}
 
-    // System.out.println(leftTrigger - rightTrigger);
-    RobotMap.motorFmwiabR.set((leftTrigger - rightTrigger) / 3);
-  }
-  
-  public void setFmwiabAngle(double speed) { 
-    RobotMap.motorFmwiabR.set(speed / 2);
-  }
- 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new FmwiabAngle());
   }
 }

@@ -38,9 +38,9 @@ public class LiftArm extends Command {
   @Override
   protected boolean isFinished() {
     System.out.println(Timer.getFPGATimestamp());
-    return Timer.getFPGATimestamp() > (startTime + 0.5);
-  }
+    return Timer.getFPGATimestamp() > (startTime + 1.5);
 
+  }
   // Called once after isFinished returns true
   @Override
   protected void end() {

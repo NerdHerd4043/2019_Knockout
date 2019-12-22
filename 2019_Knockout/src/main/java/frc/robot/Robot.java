@@ -20,7 +20,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.networktables.NetworkTableEntry;
 
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+// import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 import frc.robot.subsystems.*;
 
@@ -36,11 +36,14 @@ public class Robot extends TimedRobot {
   public static Drivetrain drivetrain;
   public static Yoinker yoinker;
   public static Fmwiab fmwiab;
+  public static AngleSub angleSub;
 
   public static AHRS ahrs;
 
-  private static final double cpr = 360; //if am-3132
-  private static final double whd = 6; // for 6 inch wheel
+  public static double turnSpeed;
+
+  // private static final double cpr = 360; //if am-3132
+  // private static final double whd = 6; // for 6 inch wheel
 
   public static Command m_autonomousCommand;
 
@@ -58,6 +61,9 @@ public class Robot extends TimedRobot {
     drivetrain = new Drivetrain();
     yoinker = new Yoinker();
     fmwiab = new Fmwiab();
+    angleSub = new AngleSub();
+
+    turnSpeed = 0;
 
     ahrs = new AHRS(SPI.Port.kMXP); 
 

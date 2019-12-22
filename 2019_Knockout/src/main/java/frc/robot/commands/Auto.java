@@ -19,8 +19,10 @@ public class Auto extends CommandGroup {
     // addSequential(new Command2());
     // these will run in order.
 
+    addParallel(new MaintainAngle());
     addSequential(new DriveForward());
     addSequential(new LiftArm());
+
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());
