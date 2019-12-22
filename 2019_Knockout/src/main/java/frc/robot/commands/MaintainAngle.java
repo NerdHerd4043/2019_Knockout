@@ -20,15 +20,17 @@ public class MaintainAngle extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    System.out.println("Maintaining Angle");
     Robot.ahrs.reset();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    System.out.println("turn speed (AG): " + Robot.angleSub.turnToAngle(0));
     Robot.turnSpeed = Robot.angleSub.turnToAngle(0);
   }
-
+ 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {

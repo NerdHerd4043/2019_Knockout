@@ -19,7 +19,7 @@ public class Auto extends CommandGroup {
     // addSequential(new Command2());
     // these will run in order.
 
-    addParallel(new MaintainAngle());
+    // addParallel(new MaintainAngle());
     addSequential(new DriveForward());
     addSequential(new LiftArm());
 

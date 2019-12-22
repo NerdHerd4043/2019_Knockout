@@ -29,7 +29,7 @@ public class Fmwiab extends Subsystem {
   }
   
   public void setFmwiabAngle(double speed) { 
-    RobotMap.motorFmwiabR.set(speed / 2);
+    RobotMap.motorFmwiabR.set(speed / 3);
   }
  
   @Override

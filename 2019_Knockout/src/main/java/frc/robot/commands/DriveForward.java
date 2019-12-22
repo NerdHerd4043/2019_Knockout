@@ -8,7 +8,7 @@
 package frc.robot.commands;
 
 
-import edu.wpi.first.wpilibj.Timer;
+// import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -28,6 +28,7 @@ public class DriveForward extends Command {
     System.out.println("ResettingEncs");
     RobotMap.motorRB.setSelectedSensorPosition(0, 0, 10);
     RobotMap.motorLB.setSelectedSensorPosition(0, 0, 10);
+    Robot.ahrs.reset();
     // startTime = 0;
     // startTime = Timer.getFPGATimestamp();
   }
@@ -35,10 +36,9 @@ public class DriveForward extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    System.out.println(RobotMap.motorRB.getSelectedSensorPosition() + " auto");
+    System.out.println("auto: " + -RobotMap.motorRB.getSelectedSensorPosition() + "\t" + "turn speed: " + Robot.turnSpeed);
     Robot.drivetrain.antiShift();
-    Robot.drivetrain.drive(-0.9, Robot.turnSpeed);
+    Robot.drivetrain.drive(-0.9, -turnToAngle(0));
     Robot.yoinker.yoink(-0.8);
     Robot.fmwiab.setFmwiabAngle(0.2);
   }
@@ -60,4 +60,19 @@ public class DriveForward extends Command {
   @Override
   protected void interrupted() {
   }
+
+  public double turnToAngle(double wantedAngle){ //Takes in a wanted angle and returns the turnSpeed to get there
+		double currentAngle = Robot.ahrs.getAngle(); //In order to determine where we are, take in the current gyro value from the navx
+		double rotateSpeed;
+		
+		if (currentAngle > wantedAngle + 2) { 				//If we are too far to the right of where we want to be...
+			rotateSpeed = -.7d;													//turn left (negative number)
+		} else if (currentAngle < wantedAngle - 2) {	//Otherwise, if we are too far left ...
+			rotateSpeed = .7d;													//turn right (positive number)
+		} else {																			//If we are right on track ...
+			rotateSpeed = 0d;														//don't rotate
+		}
+		
+		return rotateSpeed;
+	}
 }
